@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap");
+@plugin "daisyui";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Cairo", sans-serif;
+  --color-main-gradient: linear-gradient(
+    135deg,
+    #020813 0%,
+    #0b1528 50%,
+    #0f2042 100%
+  );
+  --color-neon-cyan: #22d3ee;
+  --color-neon-sky: #7dd3fc;
+}
+
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+
+  backdrop-filter: blur(60px) saturate(160%);
+  -webkit-backdrop-filter: blur(60px) saturate(160%);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+}
+
+.glass-task-item {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.005) 100%
+  );
+  backdrop-filter: blur(30px) saturate(140%);
+  -webkit-backdrop-filter: blur(30px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.glass-task-item:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.neon-text {
+  background: linear-gradient(
+    90deg,
+    var(--color-neon-cyan) 0%,
+    var(--color-neon-sky) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 12px rgba(34, 211, 238, 0.5));
+  font-weight: 900;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.2);
+}
