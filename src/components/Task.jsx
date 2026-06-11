@@ -15,11 +15,12 @@ export default function Task({ key1, task, isDeleted, tasks, setTasks }) {
   }, []);
 
   let removeTask = () => {
-    if (toast.isActive("deleteToast")) {
+    if (isToastOpen || toast.isActive("deleteToast")) {
       return;
     }
 
     setIsToastOpen(true);
+    toast.dismiss();
 
     setTasks((prevtasks) => {
       let update = [...prevtasks];

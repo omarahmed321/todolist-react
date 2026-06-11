@@ -28,7 +28,10 @@ export default function App() {
       localStorage.setItem("tasks", JSON.stringify(temp));
       myinput.current.value = "";
       myinput.current.style.height = "56px";
+
+      toast.dismiss();
       toast("ياااه اخيرا عندك حاجه تعمليها يلاااا", {
+        toastId: "addToast",
         className:
           "!backdrop-blur-xl !bg-white/[0.03] !border !border-white/5 text-white font-medium rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]",
         progressClassName: "!bg-gradient-to-r !from-cyan-500 !to-blue-500",
