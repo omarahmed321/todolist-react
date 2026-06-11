@@ -14,11 +14,17 @@ export default function Input({ myInput1, newTask }) {
         ref={myInput1}
         rows="1"
         onChange={handleInput}
-        onKeyDown={(event) => event.key === "Enter" && newTask()}
+        // onKeyDown={(event) => event.key === "Enter" && newTask()}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            newTask();
+          }
+        }}
         placeholder="اي حاجه عاوز تعينها اكتبها"
         className="block w-full h-[56px] max-h-[150px] resize-none overflow-y-hidden rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-3xl py-4 pl-6 pr-16 text-base text-white transition-all duration-100 placeholder:text-slate-500/70 focus:border-[var(--color-neon-cyan)]/40 focus:outline-none focus:bg-white/[0.05] focus:shadow-[0_0_25px_rgba(34,211,238,0.15),inset_0_1px_1px_rgba(255,255,255,0.2)] text-[15px] text-right "
       />
-      <div className="absolute inset-y-0 right-2 flex items-center">
+      <div className="absolute top-2 right-2 flex items-center">
         <button
           onClick={newTask}
           type="button"

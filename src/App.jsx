@@ -9,18 +9,21 @@ import { AnimatePresence } from "framer-motion";
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
+
   useEffect(() => {
     localStorage.getItem("tasks")
       ? setTasks(JSON.parse(localStorage.getItem("tasks")))
       : setTasks([]);
   }, []);
+
   const myinput = useRef();
+
   let addTask = () => {
     let task = myinput.current.value;
-
     let temp = [...tasks];
     if (task.trim() != "") {
-      temp.push(task);
+      let newTaskObject = { id: Date.now(), text: task, isDeleted: false };
+      temp.push(newTaskObject);
       setTasks(temp);
       localStorage.setItem("tasks", JSON.stringify(temp));
       myinput.current.value = "";
@@ -34,8 +37,8 @@ export default function App() {
   };
 
   return (
-    <div class="w-full h-dvh flex flex-col  bg-gradient-to-tr from-[#020813] via-[#0b1528] to-[#0f2042] items-center justify-center p-4 ">
-      <div className="  container w-full  overflow-auto mx-auto flex flex-col  items-center p-6">
+    <div className="w-full h-dvh flex flex-col bg-gradient-to-tr from-[#020813] via-[#0b1528] to-[#0f2042] items-center justify-center p-4 overflow-x-hidden">
+      <div className="container w-full overflow-auto mx-auto flex flex-col items-center p-6">
         <h1 className="text-white font-bold mb-10 neon-text text-[35px] md:text-5xl ">
           Todolist
         </h1>
@@ -44,25 +47,29 @@ export default function App() {
 
         <div className="tasks flex flex-col gap-6 w-full ">
           <AnimatePresence>
-            {tasks.map((el, index) => {
-              return (
-                <Task
-                  key1={index}
-                  element={el}
-                  tasks={tasks}
-                  setTasks={setTasks}
-                />
-              );
-            })}
+            {tasks
+              .filter((el) => !el.isDeleted)
+              .map((el, index) => {
+                return (
+                  <Task
+                    key={el.id}
+                    key1={index}
+                    task={el}
+                    isDeleted={el.isDeleted}
+                    tasks={tasks}
+                    setTasks={setTasks}
+                  />
+                );
+              })}
           </AnimatePresence>
         </div>
         <p className=" neon-text mt-8 text-center">
-          {" "}
           موقع بسيط عامله لتسجيل الملاحظات والتاسكات اليوميه made by Omar
         </p>
       </div>
       <ToastContainer
         theme="dark"
+        limit={1}
         position="top-center"
         toastClassName={() =>
           "!relative !flex !p-4 !min-h-10 !rounded-2xl !justify-between !overflow-hidden !cursor-pointer !bg-white/[0.02] !backdrop-blur-xl !border !border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]"
