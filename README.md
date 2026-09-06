@@ -1,6 +1,6 @@
 # Todo-List Application (Interactive Glassmorphism Task Manager)
 
-**Live Demo:** [https://todolist-for-mariam.vercel.app](https://todolist-for-mariam.vercel.app)  
+
 **Alternative Mirror (GitHub Pages):** [https://omarahmed321.github.io/todolist-react/](https://omarahmed321.github.io/todolist-react/)
 
 A responsive **task management web application** built with **React**, **Tailwind CSS**, and **Framer Motion**. The application combines frosted glassmorphism aesthetics with animated list transitions, client-side persistence, and interactive undo notifications.
